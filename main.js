@@ -15,20 +15,20 @@ const addTask = () => {
   table.innerHTML = ''
   displayTodos();
 };
-const Status = (tr, el) => {
-  const changeStatus = document.createElement('button');
-  changeStatus.textContent = el.status;
-  tr.appendChild(changeStatus)
+const changeStatus = (tr, el) => {
+  const statusBtn = document.createElement('button');
+  statusBtn.textContent = el.status;
+  tr.appendChild(statusBtn)
 };
-const Delete = (tr, list) => {
-  const changeDelete = document.createElement('button');
-  changeDelete.textContent = '削除';
-  changeDelete.addEventListener('click', () => {
+const changeDelete = (tr, list) => {
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = '削除';
+  deleteBtn.addEventListener('click', () => {
     table.innerHTML = ''
     todos.splice(list.textContent, 1);
     displayTodos();
   });
-  tr.appendChild(changeDelete)
+  tr.appendChild(deleteBtn)
 };
 //関数displayTodos
 const displayTodos = () => {
@@ -42,8 +42,8 @@ const displayTodos = () => {
     table.appendChild(tr);
     tr.appendChild(list);
     tr.appendChild(th);    
-    Status(tr, el);
-    Delete(tr, list);
+    changeStatus(tr, el);
+    changeDelete(tr, list);
     
   })
   num = 0
